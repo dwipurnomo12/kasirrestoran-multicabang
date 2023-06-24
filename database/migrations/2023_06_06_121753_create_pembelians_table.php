@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kode_pembelian');
             $table->bigInteger('total_harga');
             $table->enum('status', ['paid', 'unpaid'])->default('unpaid');
-            $table->date('tgl_transaksi')->default(Carbon::now()->toDateString());
+            $table->date('tgl_transaksi')->default(\Carbon\Carbon::now()->format('Y-m-d'));
             $table->foreignId('user_id');
             $table->foreignId('cabang_id');
             $table->timestamps();

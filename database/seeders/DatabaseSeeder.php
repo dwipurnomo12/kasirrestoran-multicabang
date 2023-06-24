@@ -29,6 +29,34 @@ class DatabaseSeeder extends Seeder
             'role_id'   => 2,
             'cabang_id' => 1
         ]);
+        User::create([
+            'name'      => 'mandono',
+            'email'     => 'mandono@gmail.com',
+            'password'  =>  bcrypt('1234'),
+            'role_id'   => 4,
+            'cabang_id' => 1
+        ]);
+        User::create([
+            'name'      => 'Mujiyono',
+            'email'     => 'mujiyono@gmail.com',
+            'password'  =>  bcrypt('1234'),
+            'role_id'   => 3,
+            'cabang_id' => 1
+        ]);
+        User::create([
+            'name'      => 'Abdul',
+            'email'     => 'abdul@gmail.com',
+            'password'  =>  bcrypt('1234'),
+            'role_id'   => 4,
+            'cabang_id' => 2
+        ]);
+        User::create([
+            'name'      => 'Agung',
+            'email'     => 'agung@gmail.com',
+            'password'  =>  bcrypt('1234'),
+            'role_id'   => 3,
+            'cabang_id' => 2
+        ]);
 
         Cabang::create([
             'cabang'    => 'Pusat',

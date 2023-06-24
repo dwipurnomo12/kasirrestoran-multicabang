@@ -106,6 +106,7 @@
 
               <li class="menu-header">Laporan</li>
               <li><a class="nav-link" href="/laporan-penjualan"><i class="fa fal fa-file-invoice-dollar"></i><span>Laporan Penjualan</span></a></li>
+              <li><a class="nav-link" href="/rekap-pemasukan"><i class="fa fal fa-receipt"></i><span>Rekap Pemasukan</span></a></li>
 
               <li class="menu-header">Manajemen User</li>
               <li><a class="nav-link" href="/pengguna"><i class="fa fal fa-users"></i><span>Pengguna</span></a></li>
@@ -223,6 +224,8 @@
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  @stack('script')
 
 </body>
 </html>

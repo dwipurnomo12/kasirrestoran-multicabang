@@ -1,17 +1,20 @@
 <?php
 
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPenjualanController;
 use App\Http\Controllers\HakAksesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LaporanPemasukanController;
 use App\Http\Controllers\LaporanPenjualanController;
 use App\Http\Controllers\MakananController;
 use App\Http\Controllers\MenuKasirController;
 use App\Http\Controllers\MinumanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\RekapPemasukanController;
 use App\Http\Controllers\UserController;
 use App\Models\Cabang;
 use App\Models\Pembayaran;
@@ -49,6 +52,8 @@ Route::middleware('auth', 'filterCabang')->group(function(){
         Route::get('/laporan-penjualan/get-data', [LaporanPenjualanController::class, 'getData']);
         Route::get('/laporan-penjualan/print-laporan-penjualan', [LaporanPenjualanController::class, 'getData']);
         Route::resource('/laporan-penjualan', LaporanPenjualanController::class);
+
+        Route::resource('/rekap-pemasukan', RekapPemasukanController::class);
     });
 
     Route::group(['middleware' => 'checkRole:administrator,kepala restoran'], function(){

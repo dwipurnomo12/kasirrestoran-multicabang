@@ -41,8 +41,8 @@
                                         <th>Kode</th>
                                         <th>Total</th>
                                         <th>Status</th>
-                                        <th>Item</th>
                                         <th>Tgl. Transaksi</th>
+                                        <th>Item</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,7 +74,6 @@
             $.each(response.data, function(key, value){
                 var badgeClass = value.status === 'paid' ? 'badge-success' : 'badge-warning';
                 var badgeText = value.status === 'paid' ? 'Paid' : 'Unpaid';
-                var formattedDate = dayjs(value.updated_at).format('DD MMMM YYYY');
 
                 let detailItems = '';
                 $.each(value.detail_pembelians, function(index, detailItem) {
@@ -90,8 +89,8 @@
                             <td>
                                 <span class="badge ${badgeClass}">${badgeText}</span>
                             </td>
+                            <td>${value.tgl_transaksi}</td>
                             <td>${detailItems}</td>
-                            <td>${formattedDate}</td>
                         </tr>
                     `;
                         
@@ -125,7 +124,6 @@
                     $.each(response.data, function(key, value){
                         var badgeClass = value.status === 'paid' ? 'badge-success' : 'badge-warning';
                         var badgeText = value.status === 'paid' ? 'Paid' : 'Unpaid';
-                        var formattedDate = dayjs(value.updated_at).format('DD MMMM YYYY');
 
                         let detailItems = '';
                         $.each(value.detail_pembelians, function(index, detailItem) {
@@ -141,7 +139,7 @@
                                     <td>
                                         <span class="badge ${badgeClass}">${badgeText}</span>
                                     </td>
-                                    <td>${formattedDate}</td>
+                                    <td>${value.tgl_transaksi}</td>
                                     <td>${detailItems}</td>
                                 </tr>
                             `;
