@@ -58,7 +58,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <form id="filter_form" action="/laporan-barang-masuk/get-data" method="GET">
+                                <form id="filter_form" action="/laporan-penjualan/get-data" method="GET">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <label>Pilih Tanggal Mulai :</label>
@@ -114,7 +114,7 @@
 
 <!-- Option Select -->
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     loadData();
 
     $('#filter_form').submit(function(event) {
@@ -127,9 +127,9 @@
     });
 
     function loadData() {
-        var selectedOption = $('#select-cabang').val();
-        var tanggalMulai = $('#tanggal_mulai').val();
-        var tanggalSelesai = $('#tanggal_selesai').val();
+        var selectedOption  = $('#select-cabang').val();
+        var tanggalMulai    = $('#tanggal_mulai').val();
+        var tanggalSelesai  = $('#tanggal_selesai').val();
 
         $.ajax({
             url: "/laporan-penjualan/get-data",

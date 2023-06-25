@@ -17,22 +17,8 @@
               </div>
             </div>
           </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                  <i class="fa fal fa-utensils"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Total Produk</h4>
-                  </div>
-                  <div class="card-body">
-                    {{ $totalProduk }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+      
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                   <div class="card-icon bg-danger">
                     <i class="fa far fa-exchange-alt"></i>
@@ -47,7 +33,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                   <div class="card-icon bg-warning">
                     <i class="far fa-file"></i>
@@ -57,12 +43,12 @@
                       <h4>Pemasukan Hari Ini</h4>
                     </div>
                     <div class="card-body">
-                      Rp {{ $pemasukanHariIni }}
+                      Rp. {{ number_format($pemasukanHariIni, 0, ',', '.') }}
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                   <div class="card-icon bg-success">
                     <i class="fa fal fa-file-alt"></i>
@@ -72,7 +58,7 @@
                       <h4>Total Pemasukan</h4>
                     </div>
                     <div class="card-body">
-                      Rp {{ $semuaPemasukan }}
+                      Rp. {{ number_format($semuaPemasukan, 0, ',', '.') }}
                     </div>
                   </div>
                 </div>

@@ -133,6 +133,7 @@
             
               <li class="menu-header">Laporan</li>
               <li><a class="nav-link" href="/laporan-penjualan"><i class="fa fal fa-file-invoice-dollar"></i><span>Laporan Penjualan</span></a></li>
+              <li><a class="nav-link" href="/rekap-pemasukan"><i class="fa fal fa-receipt"></i><span>Rekap Pemasukan</span></a></li>
             @endif
 
             @if(auth()->user()->role->role === 'admin')
@@ -153,6 +154,7 @@
             
               <li class="menu-header">Laporan</li>
               <li><a class="nav-link" href="/laporan-penjualan"><i class="fa fal fa-file-invoice-dollar"></i><span>Laporan Penjualan</span></a></li>
+              <li><a class="nav-link" href="/rekap-pemasukan"><i class="fa fal fa-receipt"></i><span>Rekap Pemasukan</span></a></li>
             @endif
 
             @if (auth()->user()->role->role === 'kasir')

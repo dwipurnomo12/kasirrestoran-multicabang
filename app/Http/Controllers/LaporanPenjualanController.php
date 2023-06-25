@@ -27,9 +27,9 @@ class LaporanPenjualanController extends Controller
      */
     public function getData(Request $request)
     {
-        $user = auth()->user();
+        $user           = auth()->user();
         $selectedOption = $request->input('opsi');
-        $tanggalMulai = $request->input('tanggal_mulai');
+        $tanggalMulai   = $request->input('tanggal_mulai');
         $tanggalSelesai = $request->input('tanggal_selesai');
 
         // Logika pemilihan data berdasarkan cabang dan rentang tanggal

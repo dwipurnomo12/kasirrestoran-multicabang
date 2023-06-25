@@ -41,10 +41,6 @@ class HomeController extends Controller
         $cabangNames = Cabang::whereIn('id', $pemasukanPerCabang->keys())->pluck('cabang', 'id');
 
         if ($userRole === 'administrator' || $userRole === 'kepala restoran') {
-            $totalProduk = DB::table('makanans')
-                ->crossJoin('minumen')
-                ->select(DB::raw('COUNT(*) as total'))
-                ->value('total');
             $totalTransaksi     = Pembelian::count();
             $pemasukanHariIni   = Pembelian::whereDate('tgl_transaksi', $trxHariIni)
                 ->sum('total_harga');
@@ -63,10 +59,6 @@ class HomeController extends Controller
                     return $data;
             });
         } else {
-            $totalProduk = DB::table('makanans')
-                ->join('minumen', 'makanans.cabang_id', '=', 'minumen.cabang_id')
-                ->where('makanans.cabang_id', $user->cabang_id)
-                ->count();
             $totalTransaksi = Pembelian::where('cabang_id', $user->cabang_id)->count();
             $pemasukanHariIni = Pembelian::whereDate('tgl_transaksi', $trxHariIni)
                 ->where('cabang_id', $user->cabang_id)
@@ -83,7 +75,6 @@ class HomeController extends Controller
         }
 
         return view('dashboard', [
-            'totalProduk'       => $totalProduk,
             'totalTransaksi'    => $totalTransaksi,
             'pemasukanHariIni'  => $pemasukanHariIni,
             'semuaPemasukan'    => $semuaPemasukan,

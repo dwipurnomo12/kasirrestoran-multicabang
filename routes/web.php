@@ -53,6 +53,7 @@ Route::middleware('auth', 'filterCabang')->group(function(){
         Route::get('/laporan-penjualan/print-laporan-penjualan', [LaporanPenjualanController::class, 'getData']);
         Route::resource('/laporan-penjualan', LaporanPenjualanController::class);
 
+        Route::get('/rekap-pemasukan/get-data', [RekapPemasukanController::class, 'getData']);
         Route::resource('/rekap-pemasukan', RekapPemasukanController::class);
     });
 

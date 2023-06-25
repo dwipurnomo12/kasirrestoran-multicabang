@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\DetailPembelian;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -20,6 +21,7 @@ class PembelianController extends Controller
         $transaksi = new Pembelian();
         $transaksi->kode_pembelian = $kodePembelian;
         $transaksi->total_harga = $totalHarga;
+        $transaksi->tgl_transaksi = Carbon::now()->format('Y-m-d');
         $transaksi->user_id = auth()->user()->id;
         $transaksi->cabang_id = auth()->user()->cabang_id;
         $transaksi->save();
