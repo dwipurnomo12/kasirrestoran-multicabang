@@ -45,14 +45,14 @@ class RekapPemasukanController extends Controller
                 ->sum('total_harga');
             $pemasukanKemarin   = Pembelian::whereDate('tgl_transaksi', '=', Carbon::now()->subDay()->format('Y-m-d'))
                 ->where('cabang_id', $user->cabang_id)
-                ->sum('total_harga');
+                ->sum('total_harga'); 
         }
         return view('rekap-pemasukan.index', [
             'cabangs'               => Cabang::all(),
             'pemasukanBulanIni'     => $pemasukanBulanIni,
             'pemasukanBulanLalu'    => $pemasukanBulanLalu,
             'pemasukanHariIni'      => $pemasukanHariIni,
-            'pemasukanKemarin'      => $pemasukanKemarin
+            'pemasukanKemarin'      => $pemasukanKemarin,
         ]);
     }
 
@@ -85,13 +85,15 @@ class RekapPemasukanController extends Controller
         if($tanggalMulai !== null && $tanggalSelesai !== null){
             $pembelians = $pembelians->whereBetween('tgl_transaksi', [$tanggalMulai, $tanggalSelesai]);
         }
+        $totalPemasukan = $pembelians->sum('total_harga');
 
         if($request->has('print_pdf')){
             $data = [
                 'pembelians'        => $pembelians,
                 'selectedOption'    => $selectedOption,
                 'tanggalMulai'      => $tanggalMulai,
-                'tanggalSelesai'    => $tanggalSelesai
+                'tanggalSelesai'    => $tanggalSelesai,
+                'totalPemasukan'    => $totalPemasukan
             ];
             $dompdf = new Dompdf();
             $dompdf->setPaper('A4', 'portrait');
@@ -99,11 +101,17 @@ class RekapPemasukanController extends Controller
             $dompdf->loadHtml($html);
             $dompdf->render();
             $dompdf->stream('rekap_pemasukan.pdf');
+
+            return response()->json([
+                'success' => true,
+                'totalPemasukan' => $totalPemasukan
+            ]);
         }
 
         return response()->json([
             'success'   => true,
-            'data'      => $pembelians
+            'data'      => $pembelians,
+            'totalPemasukan' => $totalPemasukan
         ]);
     }
 

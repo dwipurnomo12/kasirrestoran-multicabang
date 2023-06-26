@@ -54,6 +54,7 @@ Route::middleware('auth', 'filterCabang')->group(function(){
         Route::resource('/laporan-penjualan', LaporanPenjualanController::class);
 
         Route::get('/rekap-pemasukan/get-data', [RekapPemasukanController::class, 'getData']);
+        Route::get('/rekap-pemasukan/print-rekap-pemasukan', [RekapPemasukanController::class, 'getData']);
         Route::resource('/rekap-pemasukan', RekapPemasukanController::class);
     });
 

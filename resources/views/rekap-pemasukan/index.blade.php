@@ -227,6 +227,39 @@
             $('#filter_form')[0].reset();
             loadData();
         }
+
+        // Print Rekap Pemasukan
+        $('#print-rekap-pemasukan').on('click', function(){
+            var selectedOption  = $('#select-cabang').val();
+            var tanggalMulai    = $('#tanggal_mulai').val();
+            var tanggalSelesai  = $('#tanggal_selesai').val();
+            var url             = '/rekap-pemasukan/print-rekap-pemasukan';
+
+            if(selectedOption && selectedOption !== 'Semua Cabang'){
+                url += '?opsi=' + selectedOption;
+                if(tanggalMulai && tanggalSelesai){
+                    url += '&tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
+                }
+            }
+            if(tanggalMulai && tanggalSelesai){
+                url += '?tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
+            }
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                dataType: 'JSON',
+                data: { print_pdf: true},
+                success: function(response){
+                    if(response.success){
+                        console.log('PDF telah dicetak');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            })
+        })
     });
 </script>
 @endsection
