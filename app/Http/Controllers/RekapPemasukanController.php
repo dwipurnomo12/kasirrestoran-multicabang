@@ -24,27 +24,35 @@ class RekapPemasukanController extends Controller
 
         if($userRole === 'administrator' || $userRole === 'kepala restoran'){
             $pemasukanBulanIni  = Pembelian::whereMonth('tgl_transaksi', $bulanIni)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
             $pemasukanBulanLalu = Pembelian::whereMonth('tgl_transaksi', '=', Carbon::now()->subMonth()->format('m'))
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
 
             $pemasukanHariIni   = Pembelian::whereDate('tgl_transaksi', $hariIni)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
             $pemasukanKemarin   = Pembelian::whereDate('tgl_transaksi', '=', Carbon::now()->subDay()->format('Y-m-d'))
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
         } else{
             $pemasukanBulanIni  = Pembelian::whereMonth('tgl_transaksi', $bulanIni)
                 ->where('cabang_id', $user->cabang_id)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
             $pemasukanBulanLalu = Pembelian::whereMonth('tgl_transaksi', '=', Carbon::now()->subMonth()->format('m'))
                 ->where('cabang_id', $user->cabang_id)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
 
             $pemasukanHariIni   = Pembelian::whereDate('tgl_transaksi', $hariIni)
                 ->where('cabang_id', $user->cabang_id)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga');
             $pemasukanKemarin   = Pembelian::whereDate('tgl_transaksi', '=', Carbon::now()->subDay()->format('Y-m-d'))
                 ->where('cabang_id', $user->cabang_id)
+                ->where('status', '=', 'paid')
                 ->sum('total_harga'); 
         }
         return view('rekap-pemasukan.index', [
@@ -66,21 +74,20 @@ class RekapPemasukanController extends Controller
         $tanggalMulai   = $request->input('tanggal_mulai');
         $tanggalSelesai = $request->input('tanggal_selesai');
 
-        if ($user->role->role === 'administrator' || $user->role->role === 'kepala restoran'){
-            if($selectedOption == '' || $selectedOption === 'Semua Cabang'){
-                $pembelians = Pembelian::all();
-            } else{
-                $pembelians = Pembelian::where('cabang_id', $selectedOption)->get();
-            }
-        } else{
-            if($selectedOption == '' || $selectedOption === 'Semua Cabang'){
-                $pembelians = Pembelian::where('cabang_id', $user->cabang_id)->get();
+        if ($user->role->role === 'administrator' || $user->role->role === 'kepala restoran') {
+            if ($selectedOption == '' || $selectedOption === 'Semua Cabang') {
+                $pembelians = Pembelian::where('status', '=', 'paid')->get();
             } else {
-                $pembelians = Pembelian::where('cabang_id', $user->cabang_id)
-                    ->where('cabang_id', $selectedOption)
-                    ->get();
+                $pembelians = Pembelian::where('cabang_id', $selectedOption)->where('status', '=', 'paid')->get();
+            }
+        } else {
+            if ($selectedOption == '' || $selectedOption === 'Semua Cabang') {
+                $pembelians = Pembelian::where('cabang_id', $user->cabang_id)->where('status', '=', 'paid')->get();
+            } else {
+                $pembelians = Pembelian::where('cabang_id', $user->cabang_id)->where('cabang_id', $selectedOption)->where('status', '=', 'paid')->get();
             }
         }
+        
 
         if($tanggalMulai !== null && $tanggalSelesai !== null){
             $pembelians = $pembelians->whereBetween('tgl_transaksi', [$tanggalMulai, $tanggalSelesai]);

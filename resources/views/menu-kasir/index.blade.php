@@ -31,7 +31,7 @@
                   </table>
                 </div>
                 <div class="card-footer">
-                  <h6>Total: Rp. <span id="checkoutTotalDetail"></span></h6>
+                  <h6>Sub-Total: Rp. <span id="checkoutTotalDetail"></span></h6>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
                   <h4>Pembayaran</h4>
                 </div>
                 <div class="card-body">
-                  <h3>Total: Rp. <span id="checkoutTotalPayment"></span></h3>
+                  <h3>Sub-Total: Rp. <span id="checkoutTotalPayment"></span></h3>
                   <div class="payment-section">
                     <input type="hidden" id="id">
 
@@ -72,7 +72,7 @@
                     </div>
 
                     <div id="paymentMessage"></div>
-                    <button class="btn btn-primary" onclick="calculateChange()">Pembayaran</button>
+                    <button class="btn btn-primary" onclick="calculateChange()">Bayar</button>
 
                   </div>
                 </div>

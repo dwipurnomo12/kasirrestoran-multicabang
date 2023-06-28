@@ -10,6 +10,79 @@
     </div>
 
     <div class="section-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h6>Transaksi Hari Ini</h6>
+                    </div>
+                    <div class="card-body">
+                        <b>{{ number_format($transaksiHariIni), 0, ',', '.' }}</b> kali
+                        @if ($transaksiHariIni > $transaksiKemarin)
+                            @if ($transaksiKemarin > 0)
+                                <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> {{ number_format((($transaksiHariIni - $transaksiKemarin) / $transaksiKemarin) * 100, 2) }}%</span>
+                            @else
+                                <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> Naik</span>
+                            @endif
+                        @elseif($transaksiHariIni < $transaksiKemarin)
+                            @if ($transaksiKemarin > 0)
+                                <span class="badge badge-danger"><i class="fa far fa-arrow-down"></i> {{ number_format((($transaksiKemarin - $transaksiHariIni) / $transaksiKemarin) * 100, 2) }}%</span>
+                            @else
+                                <span class="badge badge-danger"><i class="fa far fa-arrow-down"></i> Turun</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">Sama</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h6>Transaksi Kemarin</h6>
+                    </div>
+                    <div class="card-body">
+                        <b>{{ number_format($transaksiKemarin), 0, ',', '.' }}</b> kali
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h6>Transaksi Bulan Ini</h6>
+                    </div>
+                    <div class="card-body">
+                        <b>{{ number_format($transaksiHariIni), 0, ',', '.' }}</b> kali
+                        @if ($transaksiHariIni > $transaksiBulanLalu)
+                            @if ($transaksiBulanLalu > 0)
+                                <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> {{ number_format((($transaksiHariIni - $transaksiBulanLalu) / $transaksiBulanLalu) * 100, 2) }}%</span>
+                            @else
+                                <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> Naik</span>
+                            @endif
+                        @elseif($transaksiHariIni < $transaksiBulanLalu)
+                            @if ($transaksiBulanLalu > 0)
+                                <span class="badge badge-danger"><i class="fa far fa-arrow-down"></i> {{ number_format((($transaksiBulanLalu - $transaksiHariIni) / $transaksiBulanLalu) * 100, 2) }}%</span>
+                            @else
+                                <span class="badge badge-danger"><i class="fa far fa-arrow-down"></i> Turun</span>
+                            @endif
+                        @else
+                            <span class="badge badge-secondary">Sama</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h6>Transaksi Bulan Lalu</h6>
+                    </div>
+                    <div class="card-body">
+                        <b>{{ number_format($transaksiBulanLalu), 0, ',', '.' }}</b> kali
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row"> 
             @if (auth()->user()->role->role === 'administrator' || auth()->user()->role->role === 'kepala restoran' )
             <div class="col-lg-12">

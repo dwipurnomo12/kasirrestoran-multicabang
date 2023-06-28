@@ -50,21 +50,28 @@
 
             <div class="col-md-3">
                 <div class="card card-primary">
-                    <div class="card-header">
-                        <h6>Pemasukan Bulan Ini</h6>
-                    </div>
-                    <div class="card-body">
-                        <b>Rp. {{ number_format($pemasukanBulanIni, 0, ',', '.') }}</b>
-                        @if ($pemasukanBulanIni > $pemasukanBulanLalu)
-                            <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> {{ number_format((($pemasukanBulanIni - $pemasukanBulanLalu) / $pemasukanBulanLalu) * 100, 2) }}</span>
-                        @elseif($pemasukanBulanIni < $pemasukanBulanLalu)
-                            <span class="badge badge-danger"><i class="fa far fa-arrow-up"></i> {{ number_format((($pemasukanBulanLalu - $pemasukanBulanIni) / $pemasukanBulanLalu) * 100, 2) }}</span>
-                        @else   
-                            <span class="badge badge-secondary">Sama</span>
-                        @endif
-                    </div>
+                  <div class="card-header">
+                    <h6>Pemasukan Bulan Ini</h6>
+                  </div>
+                  <div class="card-body">
+                    <b>Rp. {{ number_format($pemasukanBulanIni, 0, ',', '.') }}</b>
+                    @if ($pemasukanBulanLalu > 0)
+                      @if ($pemasukanBulanIni > $pemasukanBulanLalu)
+                        <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> {{ number_format((($pemasukanBulanIni - $pemasukanBulanLalu) / $pemasukanBulanLalu) * 100, 2) }}%</span>
+                      @elseif ($pemasukanBulanIni < $pemasukanBulanLalu)
+                        <span class="badge badge-danger"><i class="fa far fa-arrow-down"></i> {{ number_format((($pemasukanBulanLalu - $pemasukanBulanIni) / $pemasukanBulanLalu) * 100, 2) }}%</span>
+                      @else
+                        <span class="badge badge-secondary">Sama</span>
+                      @endif
+                    @elseif ($pemasukanBulanLalu == 0 && $pemasukanBulanIni > 0)
+                      <span class="badge badge-success"><i class="fa far fa-arrow-up"></i> Naik</span>
+                    @else
+                      <span class="badge badge-secondary">Tidak tersedia</span>
+                    @endif
+                  </div>
                 </div>
-            </div>
+              </div>
+              
             <div class="col-md-3">
                 <div class="card card-primary">
                     <div class="card-header">

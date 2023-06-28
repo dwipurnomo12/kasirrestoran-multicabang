@@ -53,48 +53,59 @@
     $.ajax({
         url: "/pengguna/get-data",
         type: "GET",
-        dataType: 'JSON',
-        success: function(response){
-            let counter = 1;
-            $('#table_id').DataTable().clear();
-            $.each(response.data, function(key, value){
-                getRoleName(value.role_id, function(role){
-                    getCabangName(value.cabang_id, function(cabang){
-                        let pengguna = `
-                        <tr class="pengguna-row" id="index_${value.id}">
-                            <td>${counter++}</td>
-                            <td>${value.name}</td>
-                            <td>${value.email}</td>
-                            <td>${role}</td>
-                            <td>${cabang}</td>
-                            <td>
-                                <a href="javascript:void(0)" id="button_edit_pengguna" data-id="${value.id}" class="btn btn-lg btn-warning mb-2"><i class="far fa-edit"></i> </a>
-                                <a href="javascript:void(0)" id="button_hapus_pengguna" data-id="${value.id}" class="btn btn-lg btn-danger mb-2"><i class="fas fa-trash"></i> </a>
-                            </td>
-                        </tr>
-                        `;
-                        $('#table_id').DataTable().row.add($(pengguna)).draw(false);
-                    });
-                });
+        dataType: 'JSON'
+        })
+        .then(function(response) {
+        let counter = 1;
+        $('#table_id').DataTable().clear();
+
+        const getRoleNamePromise = new Promise(function(resolve, reject) {
+            $.getJSON('{{ url('api/role') }}', function(roles) {
+            resolve(roles);
             });
-            function getRoleName(roleId, callback){
-                $.getJSON('{{ url('api/role') }}', function(roles){
-                    var role = roles.find(function(s){
-                        return s.id === roleId
-                    });
-                    callback(role ? role.role: '');
-                });
-            }
-            function getCabangName(cabangId, callback){
-                $.getJSON('{{ url('api/cabang') }}', function(cabangs){
-                    var cabang = cabangs.find(function(s){
-                        return s.id === cabangId
-                    });
-                    callback(cabang ? cabang.cabang: '');
-                });
-            }
-        }
+        });
+
+        const getCabangNamePromise = new Promise(function(resolve, reject) {
+            $.getJSON('{{ url('api/cabang') }}', function(cabangs) {
+            resolve(cabangs);
+            });
+        });
+
+        Promise.all([getRoleNamePromise, getCabangNamePromise])
+        .then(function([roles, cabangs]) {
+            $.each(response.data, function(key, value) {
+            const role = roles.find(function(s) {
+                return s.id === value.role_id;
+            });
+
+            const cabang = cabangs.find(function(s) {
+                return s.id === value.cabang_id;
+            });
+
+            let pengguna = `
+                <tr class="pengguna-row" id="index_${value.id}">
+                <td>${counter++}</td>
+                <td>${value.name}</td>
+                <td>${value.email}</td>
+                <td>${role ? role.role : ''}</td>
+                <td>${cabang ? cabang.cabang : ''}</td>
+                <td>
+                    <a href="javascript:void(0)" id="button_edit_pengguna" data-id="${value.id}" class="btn btn-lg btn-warning mb-2"><i class="far fa-edit"></i> </a>
+                    <a href="javascript:void(0)" id="button_hapus_pengguna" data-id="${value.id}" class="btn btn-lg btn-danger mb-2"><i class="fas fa-trash"></i> </a>
+                </td>
+                </tr>
+            `;
+            $('#table_id').DataTable().row.add($(pengguna)).draw(false);
+            });
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+        })
+        .catch(function(error) {
+        console.error(error);
     });
+
 </script>
 
 <!-- Show Modal Create -->
