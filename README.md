@@ -109,3 +109,13 @@ Demo Login :
 
 Demo Video : https://youtu.be/Hg7LXFC9M6Y
 
+
+## Screenshoot
+![Screenshot_990](https://github.com/dwipurnomo12/kasirrestoran-multicabang/assets/105181667/21be7a95-a6f9-449e-8087-480399004bfc)
+![Screenshot_991](https://github.com/dwipurnomo12/kasirrestoran-multicabang/assets/105181667/8c55f2b8-c441-49b4-abe2-4e7b24862a67)
+![Screenshot_992](https://github.com/dwipurnomo12/kasirrestoran-multicabang/assets/105181667/803a75c8-36b9-4a97-b789-8c0279ec8c8e)
+![Screenshot_993](https://github.com/dwipurnomo12/kasirrestoran-multicabang/assets/105181667/94456e17-b47e-475c-a962-c5be74f4046d)
+
+
+
+
