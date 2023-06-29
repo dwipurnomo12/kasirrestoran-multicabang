@@ -7,60 +7,105 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Aplikasi Kasir Restoran Multi Cabang
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sistem informasi BKK (Bursa Kerja Khusus) adalah sebuah sistem informasi yang dibangun untuk membantu proses perekrutan dan penempatan tenaga kerja di Indonesia. BKK sendiri adalah sebuah lembaga yang memiliki tugas untuk membantu memfasilitasi penempatan tenaga kerja di perusahaan-perusahaan yang membutuhkan.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Fitur
+Aplikasi Kasir Restoran Multi Cabang Berbasis Web dibuat dengan Framework Laravel, Javascript, Jquery Ajax. Terdapat 4 role yaitu Administrator, Kepala Restoran, Admin per-cabang, Kasir-percabang.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Administrator
+- Manajemen produk (makanan/minuman)
+- Manajemen Cabang
+- Menu Kasir
+- Data Penjualan
+- Laporan Penjualan (Print)
+- Rekap Pemasukan (Print)
+- Manajemen User/Pengguna
+- Manajemen Role/Hak Akses
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+2. Kepala Restoran
+- Manajemen produk (makanan/minuman)
+- Manajemen Cabang
+- Data Penjualan
+- Laporan Penjualan (Print)
+- Rekap Pemasukan  (Print)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+3. Admin (Kelola per-cabang)
+- Manajemen produk (makanan/minuman)
+- Data Penjualan
+- Laporan Penjualan (Print)
+- Rekap Pemasukan  (Print)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+4. Kasir (Kelola per-cabang)
+- Menu Kasir
+- Data Penjualan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Teknologi
 
-## Security Vulnerabilities
+Sistem Informasi Inventory Gudang menggunakan beberapa Teknologi diantaranya :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Laravel - The PHP Framework for Web Artisans
+- JavaScript - JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.
+- Bootstrap - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. 
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Installasi
+
+Lakukan Clone Project/Unduh manual .
+
+Aktifkan Xampp Control Panel, lalu akses ke http://localhost/phpmyadmin/.
+
+Buat database dengan nama 'kasirresto'.
+
+Jika melakukan Clone Project, rename file .env.example dengan env dan hubungkan
+database nya dengan mengisikan nama database, 'DB_DATABASE=kasirresto'.
+
+
+Kemudian, Ketik pada terminal :
+```sh
+php artisan migrate
+```
+
+Lalu ketik juga
+
+```sh
+php artisan migrate:fresh --seed
+```
+
+Jalankan aplikasi 
+
+```sh
+php artisan serve
+```
+
+Akses Aplikasi di Web browser 
+```sh
+127.0.0.1:8000
+```
+
+Demo Login :
+1. Administrator
+    - email     : administrator@gmail.com
+    - password  : 1234
+2. Kepala Restoran
+    - email     : kepalarestoran@gmail.com
+    - password  : 1234
+3. Admin cabang pusat
+    - email     : mandono@gmail.com
+    - password  : 1234
+4. Kasir cabang pusat
+    - email     : mujiyono@gmail.com
+    - password  : 1234
+
+Demo Video : https://youtu.be/Hg7LXFC9M6Y
+
