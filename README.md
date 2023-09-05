@@ -10,7 +10,7 @@
 # Aplikasi Kasir Restoran Multi Cabang
 
 
-Sistem informasi BKK (Bursa Kerja Khusus) adalah sebuah sistem informasi yang dibangun untuk membantu proses perekrutan dan penempatan tenaga kerja di Indonesia. BKK sendiri adalah sebuah lembaga yang memiliki tugas untuk membantu memfasilitasi penempatan tenaga kerja di perusahaan-perusahaan yang membutuhkan.
+Aplikasi kasir restoran berbasis web Laravel adalah sebuah sistem manajemen kasir yang digunakan dalam operasional restoran. Aplikasi ini dibangun dengan menggunakan framework Laravel, yang merupakan salah satu framework pengembangan web PHP yang populer dan kuat. Berikut adalah beberapa fitur dan penjelasan mengenai aplikasi kasir restoran berbasis web Laravel:
 
 
 
@@ -51,7 +51,7 @@ Aplikasi Kasir Restoran Multi Cabang Berbasis Web dibuat dengan Framework Larave
 
 ## Teknologi
 
-Sistem Informasi Inventory Gudang menggunakan beberapa Teknologi diantaranya :
+Aplikasi kasir restoran multicabang menggunakan beberapa Teknologi diantaranya :
 
 - Laravel - The PHP Framework for Web Artisans
 - JavaScript - JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.
